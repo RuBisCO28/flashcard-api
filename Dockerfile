@@ -29,6 +29,7 @@ RUN apk update && \
 COPY Gemfile ${ROOT}
 COPY Gemfile.lock ${ROOT}
 
+RUN bundle config set force_ruby_platform true
 RUN bundle install -j4
 RUN apk del build-packs
 
