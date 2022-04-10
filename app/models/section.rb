@@ -17,5 +17,6 @@
 #  fk_rails_...  (book_id => books.id)
 #
 class Section < ApplicationRecord
+  belongs_to :book
   has_many :contents
 end
