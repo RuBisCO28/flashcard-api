@@ -8,5 +8,5 @@
 #  updated_at :datetime         not null
 #
 class Book < ApplicationRecord
-  has_many :sections
+  has_many :sections, dependent: :restrict_with_exception
 end
