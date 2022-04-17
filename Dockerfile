@@ -21,6 +21,7 @@ RUN apk update && \
         nodejs \
         tzdata \
         shared-mime-info \
+        less \
         yarn && \
     apk add --virtual build-packs --no-cache \
         build-base \

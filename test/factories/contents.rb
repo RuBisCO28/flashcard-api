@@ -23,5 +23,7 @@ FactoryBot.define do
   factory :content do
     sequence(:question) { |n| "question_#{n}" }
     sequence(:answer) { |n| "answer_#{n}" }
+
+    association :section
   end
 end

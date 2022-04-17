@@ -19,5 +19,12 @@
 FactoryBot.define do
   factory :section do
     sequence(:name) { |n| "section_#{n}" }
+    trait :with_content do
+      after(:create) do |section|
+        create(:content, section:)
+      end
+    end
+
+    association :book
   end
 end
