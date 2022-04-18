@@ -18,5 +18,5 @@
 #
 class Section < ApplicationRecord
   belongs_to :book
-  has_many :contents
+  has_many :contents, dependent: :restrict_with_exception
 end

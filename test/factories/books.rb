@@ -9,6 +9,11 @@
 #
 FactoryBot.define do
   factory :book do
-    
+    sequence(:name) { |n| "book_#{n}" }
+    trait :with_section do
+      after(:create) do |book|
+        create(:section, book:)
+      end
+    end
   end
 end

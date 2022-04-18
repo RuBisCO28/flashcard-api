@@ -1,6 +1,14 @@
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
+require "webmock/minitest"
+
+class ActionDispatch::IntegrationTest
+  # TODO: rubocop force name to snake_case, but setup is correct
+  def set_up
+    @stubbed_header = { Authorization: SecureRandom.hex(10) }
+  end
+end
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
