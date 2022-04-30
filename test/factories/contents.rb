@@ -23,6 +23,11 @@ FactoryBot.define do
   factory :content do
     sequence(:question) { |n| "question_#{n}" }
     sequence(:answer) { |n| "answer_#{n}" }
+    trait :with_review do
+      after(:create) do |content|
+        create(:review, content:)
+      end
+    end
 
     association :section
   end
