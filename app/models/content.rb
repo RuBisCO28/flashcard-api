@@ -21,4 +21,5 @@
 #
 class Content < ApplicationRecord
   belongs_to :section
+  has_many :reviews, dependent: :restrict_with_exception
 end
