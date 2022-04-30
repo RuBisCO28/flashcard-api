@@ -1,16 +1,14 @@
 # require "csv"
 
-# book = Book.create!(name: "Duo")
-
-# sections = []
-# CSV.foreach('db/contents.csv', headers: true) do |row|
-#   sections << row[1]
+# CSV.foreach('db/books.csv', headers: true) do |row|
+#   Book.create!(name: row['name'])
 # end
 
-# sections.uniq.each do |section|
+# CSV.foreach('db/sections.csv', headers: true) do |row|
+#   book = Book.find_by(id: row['book'].to_i)
 #   Section.create!(
 #     book: book,
-#     name: section.to_s,
+#     name: row['name'].to_s
 #   )
 # end
 
@@ -19,6 +17,6 @@
 #   Content.create!(
 #     section: section,
 #     question: row['japanese'],
-#     answer: row['english'],
+#     answer: row['english']
 #   )
 # end

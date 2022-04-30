@@ -29,4 +29,6 @@
 /config/master.key
 
 .env
+db/books.csv
+db/sections.csv
 db/contents.csv

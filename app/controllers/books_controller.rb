@@ -16,6 +16,7 @@ class BooksController < ApplicationController
     book = Book.find_by(id: params[:id])
     sections = book.sections.map do |section|
       {
+        id: section.id,
         name: section.name,
       }
     end
