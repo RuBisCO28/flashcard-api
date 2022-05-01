@@ -11,8 +11,8 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
   test "#index should be success when limit is set" do
     content1 = create(:content)
     content2 = create(:content)
-    create(:review, content: content1, registered_at: Time.zone.now.ago(2.days))
-    create(:review, content: content2, registered_at: Time.zone.now.ago(1.day))
+    review1 = create(:review, content: content1, registered_at: Time.zone.now.ago(2.days))
+    review2 = create(:review, content: content2, registered_at: Time.zone.now.ago(1.day))
     create(:review, content: content1, registered_at: Time.zone.now)
     limit_size = 2
 
@@ -22,6 +22,8 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
     response_contents = JSON.parse(response.body).deep_symbolize_keys
 
     assert_equal limit_size, response_contents[:contents].count
+    assert_equal review1.id, response_contents[:contents].first[:id]
+    assert_equal review2.id, response_contents[:contents].second[:id]
   end
 
   test "#create should be success" do

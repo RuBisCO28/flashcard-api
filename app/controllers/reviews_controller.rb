@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   def index
     reviews = if params[:limit].present?
-                Review.joins(:content).limit(params[:limit].to_i)
+                Review.joins(:content).order(:id).limit(params[:limit].to_i)
               else
                 Review.joins(:content)
               end
