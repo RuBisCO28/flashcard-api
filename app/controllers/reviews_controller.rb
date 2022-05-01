@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
     reviews = if params[:limit].present?
                 Review.joins(:content).order(:id).limit(params[:limit].to_i)
               else
-                Review.joins(:content)
+                Review.joins(:content).order(:id)
               end
     contents = reviews.map do |review|
       {
